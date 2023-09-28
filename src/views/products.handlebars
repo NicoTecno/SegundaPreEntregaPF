@@ -1,0 +1,79 @@
+<section id="products" class="container">
+
+    <h1 id="title">Productos</h1>
+
+    <haeder>
+
+        <h4>Ordenar por:</h4>
+        <ul>
+            <li><a id="linkDesc" href="">Mayor precio</a></li>
+            <li><a id="linkAsc" href="">Menor precio</a></li>
+        </ul>
+
+        <h4>Categorias:</h4>
+        <ul>
+            <li><a id="CPU" href="">Procesadores</a></li>
+            <li><a id="GPU" href="">Graficas</a></li>
+            <li><a id="todo" href="">Todo</a></li>
+        </ul>
+
+        <a href="http://localhost:8080/carts/648654bd423a51a741ff13ce"><button class="btn btn-primary">Ir al carrito</button></a>
+
+    </haeder>
+
+    <div id="products-container">
+        {{#each products.docs}}
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-10">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.title}}</h5>
+                        <p class="card-text">{{this.description}}</p>
+                        <p class="card-text">${{this.price}}</p>
+                        <p class="card-text">ID: {{this._id}}</p>
+                        <p class="card-text">Categoria: {{this.category}}</p>
+                        <p class="card-text">Stock: {{this.stock}}</p>
+                        <a href="http://localhost:8080/products/{{this._id}}"><button type="button"
+                                class="btn btn-primary">Ver más</button></a>
+                        <form action="http://localhost:8080/api/carts/648654bd423a51a741ff13ce/products/{{this._id}}"
+                            method="post">
+                            <input type="submit" class="btn btn-dark" value="Agregar al carrito">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+
+        <ul class="pagination">
+            <li class="page-item">
+                {{#if products.hasPrevPage}}
+                <a class="page-link" href={{products.prevLink}} aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+                {{else}}
+                <a class="page-link disabled" href="" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+                {{/if}}
+            </li>
+
+            {{#each products.totalPagesArray}}
+            <li class="page-item"><a class="page-link" href="/products?page={{this}}">{{this}}</a></li>
+            {{/each}}
+
+            <li class="page-item">
+                {{#if products.hasNextPage}}
+                <a class="page-link" href={{products.nextLink}} aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+                {{else}}
+                <a class="page-link disabled" href="" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+                {{/if}}
+            </li>
+        </ul>
+    </div>
+</section>

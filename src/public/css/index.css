@@ -1,0 +1,21 @@
+body {
+    background-color: antiquewhite;
+}
+
+input, textarea, button{
+    margin: 10px;
+}
+
+#submitInput{
+    padding: 10px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all .3s;
+    background-color: #0d6efd;
+}
+
+#deleteInput{
+    margin-top: 10px;
+    background-color: #ff3232;
+    padding: 16px;
+}

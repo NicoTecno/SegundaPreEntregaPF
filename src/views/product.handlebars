@@ -1,0 +1,28 @@
+<section id="products" class="container">
+
+    <h1 id="title">Producto {{product.title}}</h1>
+
+    <div id="products-container">
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.title}}</h5>
+                        <p class="card-text">{{product.description}}</p>
+                        <p class="card-text">${{product.price}}</p>
+                        <p class="card-text">ID: {{product._id}}</p>
+                        <p class="card-text">Stock: {{product.stock}}</p>
+                        <p class="card-text">Categoria: {{product.category}}</p>
+                        <a href="http://localhost:8080/products/{{this._id}}"><button type="button"
+                                class="btn btn-primary">Atras</button></a>
+                        <form action="http://localhost:8080/api/carts/648654bd423a51a741ff13ce/products/{{this._id}}"
+                            method="post">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="/js/index.js"></script>

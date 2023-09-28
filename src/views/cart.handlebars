@@ -1,0 +1,45 @@
+<section id="products" class="container">
+
+    <h1 id="title">Carrito</h1>
+
+
+    <div id="products-container">
+        {{#each cart.products}}
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.product.title}}</h5>
+                        <p class="card-text">{{this.product.description}}</p>
+                        <p class="card-text">${{this.product.price}}</p>
+                        <p class="card-text">ID: {{this.product._id}}</p>
+                        <p class="card-text">Categoria: {{this.product.category}}</p>
+                        <p class="card-text">Stock: {{this.product.stock}}</p>
+
+                        <table>
+                            <tr>
+                                <td>
+                                    <a href="http://localhost:8080/products/{{this.product._id}}"><button type="button"
+                                            class="btn btn-primary">Ver más</button></a>
+
+                                </td>
+
+                                <td>
+                                    <form
+                                        action="http://localhost:8080/api/carts/648654bd423a51a741ff13ce/products/delete/{{this.product._id}}"
+                                        method="post">
+                                        <input type="submit" class="btn btn-dark" value="Eliminar de carrito">
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</section>
+
+<script src="/js/cart.js"></script>

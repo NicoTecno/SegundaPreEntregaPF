@@ -1,2 +1,1 @@
-# Practica_Integradora
 # SegundaPreEntregaPF
